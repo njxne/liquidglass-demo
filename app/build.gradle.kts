@@ -1,0 +1,56 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.compose)
+}
+
+android {
+    namespace = "com.njxne.liquidglass.demo"
+    compileSdk = 37
+
+    defaultConfig {
+        applicationId = "com.njxne.liquidglass.demo"
+        minSdk = 28
+        targetSdk = 35
+        versionCode = 1
+        versionName = "1.0.0"
+    }
+
+    signingConfigs {
+        getByName("debug") {
+            enableV1Signing = true
+            enableV2Signing = true
+        }
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("debug")
+        }
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+    }
+}
+
+dependencies {
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.compose.foundation)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.graphics)
+    implementation(libs.kyant.backdrop)
+    implementation(libs.kyant.shapes)
+}
