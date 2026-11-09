@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import com.kyant.backdrop.catalog.BackdropDemoScaffold
+import androidx.compose.ui.graphics.asImageBitmap
 import com.kyant.backdrop.catalog.utils.SdfShader
 import com.kyant.backdrop.drawPlainBackdrop
 import com.kyant.backdrop.effects.blur
@@ -32,12 +33,11 @@ import com.kyant.shapes.Rectangle
 fun LockScreenContent() {
     BackdropDemoScaffold { backdrop ->
         var offset by remember { mutableStateOf(Offset.Zero) }
-        val sdfShader = SdfShader(androidx.compose.ui.graphics.asImageBitmap(
-            android.graphics.BitmapFactory.decodeResource(
-                androidx.compose.ui.platform.LocalContext.current.resources,
-                com.njxne.liquidglass.demo.R.drawable.clock_sdf
-            )
-        ))
+        val bmp = android.graphics.BitmapFactory.decodeResource(
+            androidx.compose.ui.platform.LocalContext.current.resources,
+            com.njxne.liquidglass.demo.R.drawable.clock_sdf
+        )
+        val sdfShader = SdfShader(bmp.asImageBitmap())
 
         Column(
             Modifier

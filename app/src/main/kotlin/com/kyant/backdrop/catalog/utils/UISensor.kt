@@ -18,6 +18,17 @@ import kotlin.math.PI
 import kotlin.math.atan2
 import kotlin.math.sqrt
 
+interface UISensor {
+
+    val gravityAngle: Float
+
+    val gravity: Offset
+
+    fun start()
+
+    fun stop()
+}
+
 @Composable
 fun rememberUISensor(): UISensor {
     val context = LocalContext.current
