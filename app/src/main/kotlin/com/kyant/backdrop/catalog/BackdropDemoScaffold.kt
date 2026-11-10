@@ -35,7 +35,7 @@ import com.kyant.backdrop.catalog.components.LiquidButton
 
 @Composable
 fun BackdropDemoScaffold(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     content: @Composable BoxScope.(backdrop: LayerBackdrop) -> Unit
 ) {
     Box(
